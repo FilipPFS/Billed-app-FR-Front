@@ -19,18 +19,8 @@ const row = (bill) => {
     `;
 };
 
-const parseDate = (str) => {
-  const cleanStr = str.replace(".", "");
-  return new Date(cleanStr);
-};
-
 const rows = (data) => {
-  return data && data.length
-    ? data
-        .sort((a, b) => parseDate(b.date) - parseDate(a.date))
-        .map((bill) => row(bill))
-        .join("")
-    : "";
+  return data && data.length ? data.map((bill) => row(bill)).join("") : "";
 };
 
 export default ({ data: bills, loading, error }) => {
